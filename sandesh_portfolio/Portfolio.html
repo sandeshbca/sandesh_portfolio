@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandesh Kumar Singh </title>
+     <link rel="icon" href="portfolio_icons.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #10b981;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --accent: #f59e0b;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: var(--light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px;
+            margin-top: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--accent);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 1rem 0;
+            color: var(--secondary);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .section {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .skills-grid, .tools-grid, .social-icons, .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-card, .tool-card, .certificate-card {
+            background: rgba(15, 23, 42, 0.7);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .skill-card:hover, .tool-card:hover, .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary);
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.7);
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+            background: var(--primary);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: transform 0.3s;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .project-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, textarea {
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 23, 42, 0.7);
+            color: var(--light);
+            font-size: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        /* .btn-download {
+            background: linear-gradient(90deg, var(--accent), #ef4444);
+        }
+
+        .resume-section {
+            text-align: center;
+            padding: 2rem;
+        } */
+
+        .certificate-card {
+            text-align: left;
+            padding: 1.5rem;
+        }
+
+        .certificate-card h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-card p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .certificate-date {
+            color: var(--secondary) !important;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Progress bars for skills */
+        .skill-level {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 8px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid, .tools-grid, .certificates-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .social-icons {
+                flex-wrap: wrap;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 23, 42, 0.95);
+                flex-direction: column;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles-js"></div>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Sandesh</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="Sandesh_Kumar_Singh_Resume (2).pdf">Resume</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>/
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header id="home">
+            <h1>Sandesh Kumar Singh</h1>
+            <p class="tagline">I'm  <span class="typewriter" id="role"><strong>BCA  Student</strong></span></p>
+                        <!-- <h1>Hi, I'm <span style="color:var(--accent)">Sandesh</span> — <span class="typewriter" id="role">BCA Student</span><span class="caret" aria-hidden="true"></span></h1> -->
+            <p class="tagline">I design animated, interactive websites and simple web apps. I love clean code and playful motion.</p>
+           
+        </header>
+        <section class="section"> 
+              <h2>Connect With Me</h2>
+            <div class="social-icons">
+                <a href="mailto:sandeshsingh7309@gmail.com" class="social-icon">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="mobile: +91 8953305102" class="social-icon">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a href="https://instagram.com/_sandesh_singh_up63" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/sandesh-kumar-singh-942956359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/sandeshbca" class="social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            </section>
+                <section class="section" id="projects">
+            <h2>Personal Information</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>College</h3>
+                    </div>
+                    <p>Kashi Institue Of Technology, Varanasi</p>
+                    <p>BCA (Bachelor Of Computer Application) -  <strong>2024-2027</strong></p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">
+                        <i class="fas fa-piggy-bank project-icon"></i>
+                        <h3>School</h3>
+                    </div>
+                    <p>S.G.A, Semra, Mirzapur - Intermediate (2022-2024) <strong>Score- 74%</strong></p>
+                    <p>J.P.I.C, Bangla, Mirzapur - High School (2020-2022) <strong>Score- 80%</strong></p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">
+                        <i class="fas fa-tachometer-alt project-icon"></i>
+                        <h3>Details</h3>
+                    </div>
+                    <p>Birthday : <strong>19 Nov 2007</strong></p>
+                    <p>City : <strong>Mirzapur, Uttar Pradesh</strong></p>
+                    <p>Email : <strong>sandeshsingh7309@gmail.com</strong></p>
+                    <p>Age : <strong>18 Year</strong></p>
+                    <p>website : <strong>www.sandeshbca.com</strong></p>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section" id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="icon"><i class="fab fa-html5"></i></div>
+                    <h3>HTML5</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fab fa-css3-alt"></i></div>
+                    <h3>CSS3</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fab fa-js-square"></i></div>
+                    <h3>JavaScript</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fab fa-python"></i></div>
+                    <h3>Python</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 88%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fas fa-database"></i></div>
+                    <h3>SQLite</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 60%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fab fa-cuttlefish"></i></div>
+                    <h3>C Programming</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fab fa-cuttlefish"></i></div>
+                    <h3>C++ (Oops)</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fab fa-python"></i></div>
+                    <h3>DSA In Python</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 60%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Tools -->
+        <section class="section">
+            <h2>Development Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="icon"><i class="fab fa-git-alt"></i></div>
+                    <h3>Git</h3>
+                </div>
+                <div class="tool-card">
+                    <div class="icon"><i class="fas fa-flask"></i></div>
+                    <h3>Flask</h3>
+                </div>
+                <div class="tool-card">
+                    <div class="icon"><i class="fas fa-code"></i></div>
+                    <h3>VS Code</h3>
+                </div>
+                <div class="tool-card">
+                    <div class="icon"><i class="fab fa-figma"></i></div>
+                    <h3>Figma</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates Section -->
+        <section class="section" id="certificates">
+            <h2>Certificates & Achievements</h2>
+            <div class="certificates-grid">
+                <div class="certificate-card">
+                    <h4>Python Programming</h4>
+                    <p>Advanced Python Programming Certificate</p>
+                    <p class="certificate-date">Issued: March 2025</p>
+                </div>
+                <div class="certificate-card">
+                    <h4>Web Development</h4>
+                    <p>Full Stack Web Development Certification</p>
+                    <p class="certificate-date">Issued: January 2025</p>
+                </div>
+                <div class="certificate-card">
+                    <h4>Data Structures</h4>
+                    <p>Data Structures & Algorithms in Python</p>
+                    <p class="certificate-date">Issued: December 2026</p>
+                </div>
+                <div class="certificate-card">
+                    <h4>SQL Database</h4>
+                    <p>SQL & Database Management Certificate</p>
+                    <p class="certificate-date">Issued: November 2026</p>
+                </div>
+                <div class="certificate-card">
+                    <h4>Problem Solving</h4>
+                    <p>DSA Problem Solving (Basic) Certificate</p>
+                    <p class="certificate-date">Issued: October 2025</p>
+                </div>
+            </div>
+        </section>
+
+ 
+        <!-- Projects Section -->
+        <section class="section" id="projects">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">
+                        <i class="fas fa-laptop-code project-icon"></i>
+                        <h3>Advanced Portfolio</h3>
+                    </div>
+                    <p>CSS motion particles and animated elements.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">
+                        <i class="fas fa-piggy-bank project-icon"></i>
+                        <h3>Giving Bank</h3>
+                    </div>
+                    <p>Smart Savings & Smart People with Html , Css , JavaScript, Flask & SQLite.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">
+                        <i class="fas fa-tachometer-alt project-icon"></i>
+                        <h3>Calculator</h3>
+                    </div>
+                    <p>Unique interactive Calculator using Html , Css , JavaScript</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">
+                        <i class="fas fa-tachometer-alt project-icon"></i>
+                        <h3>Hangman Game</h3>
+                    </div>
+                    <p>Guessing word Game using Python</p>
+                </div>
+            </div>
+        </section>
+ 
+
+        <!-- Contact Section -->
+        <section class="section" id="contact">
+            <h2>Get In Touch</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" placeholder="Enter your message"></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </section>
+
+        <footer>
+            <p>© 2025 Sandeshbca — All Right Reserved</p>
+        </footer>
+    </div>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+     (function(){
+      const el = document.getElementById('role');
+      const words = ['BCA Student','Python Developer','Frontend Enthusiast','Creative Coder', ' Tools Specialist' ];
+      let w=0, i=0, forward=true;
+      function tick(){
+        const word = words[w];
+        el.textContent = word.slice(0,i);
+        if(forward){
+          if(i<word.length) i++;
+          else { forward=false; setTimeout(tick,900); return }
+        } else {
+          if(i>0) i--;
+          else { forward=true; w=(w+1)%words.length }
+        }
+        setTimeout(tick, forward?90:45);
+      }
+      tick();
+    })();
+        // Particles.js initialization
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#6366f1" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#10b981",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                }
+            }
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e){
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior : 'smooth',
+                        block: 'start'
+                    });
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+     
+      
+    </script>
+  
+</body>
+</html>
